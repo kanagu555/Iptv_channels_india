@@ -8,6 +8,8 @@ import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import "./TvLinks.css";
+import { Grid, Box, Paper } from "@mui/material";
+import { Container } from "@mui/system";
 
 const TvLinks = () => {
   const [allLinks, setAllLinks] = useState([]);
@@ -25,17 +27,20 @@ const TvLinks = () => {
       .then((res) => setChannels(res.data));
   }, []);
 
-
   console.log("allLinks:", allLinks);
   console.log("channels:", channels);
 
+  const indLinks = allLinks.filter((link) => {
+    const countryMatch = channels.find(
+      (channel) =>
+        channel.id === link.channel &&
+        channel.country === "IN" &&
+        link.status === "online"
+    );
+    return countryMatch !== undefined;
+  });
 
-  const indLinks = allLinks.filter(link => {
-    const countryMatch = channels.find(channel => channel.id === link.channel && channel.country === 'IN' && link.status === 'online')
-    return countryMatch !== undefined
-  })
-
-  console.log('indLinks:', indLinks);
+  console.log("indLinks:", indLinks);
 
   return (
     <>
@@ -49,29 +54,33 @@ const TvLinks = () => {
               <TableCell align="left">Live Link</TableCell>
             </TableRow>
           </TableHead>
-          <TableBody>
-            {indLinks.map(
-              (link, index) =>
-                link.channel && (
-                  <TableRow key={index}>
-                    <TableCell align="right">{link.channel}</TableCell>
-                    <TableCell align="left">
-                      <a href={link.url} target="_blank" rel="noreferrer">
-                        {link.channel}
-                      {/* <ReactHlsPlayer src={link.url} autoPlay={false} controls={true} /> */}
-                      </a>
-                    </TableCell>
-                  </TableRow>
-                )
-            )}
-          </TableBody>
         </Table>
       </TableContainer>
+      {/* <TableBody> */}
+      <Container>
+      <Grid container my={5} spacing={7}>
+        {indLinks.map(
+          (link, index) =>
+            link.channel && (
+              <Grid item xs={12} sm={6} md={3} key={index}>
+                <Paper>
+                  {link.channel}
+                  <a href={link.url} target="_blank" rel="noreferrer">
+                    {link.channel}
+                  </a>
+                </Paper>
+              </Grid>
+            )
+        )}
+      </Grid>
+      </Container>
+      {/* </TableBody> */}
+
       {allLinks.map((link) => (
         <>
           {link.channel === "AsianetNewsTamil.in" ? (
             <>
-            {console.log('link::', link)}
+              {console.log("link::", link)}
               <tr>{link.channel}</tr>
               <ReactHlsPlayer src={link.url} autoPlay={false} controls={true} />
             </>

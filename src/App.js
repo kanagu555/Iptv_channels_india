@@ -4,7 +4,7 @@ import TvLinks from './components/TvLinks';
 
 function App() {
   return (
-    <div className="App">
+    <div>
      <TvLinks />
     </div>
   );
