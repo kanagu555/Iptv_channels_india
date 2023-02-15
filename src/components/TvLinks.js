@@ -3,13 +3,16 @@ import React, { useEffect, useState } from "react";
 import ReactHlsPlayer from "react-hls-player";
 import TableContainer from "@mui/material/TableContainer";
 import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import "./TvLinks.css";
-import { Grid, Box, Paper } from "@mui/material";
+import { Grid, Box, Link, Typography } from "@mui/material";
 import { Container } from "@mui/system";
+import Card from '@mui/material/Card';
+import CardHeader from '@mui/material/CardHeader';
+import CardContent from '@mui/material/CardContent';
+import CircleIcon from '@mui/icons-material/Circle';
 
 const TvLinks = () => {
   const [allLinks, setAllLinks] = useState([]);
@@ -56,25 +59,26 @@ const TvLinks = () => {
           </TableHead>
         </Table>
       </TableContainer>
-      {/* <TableBody> */}
       <Container>
-      <Grid container my={5} spacing={7}>
-        {indLinks.map(
-          (link, index) =>
-            link.channel && (
-              <Grid item xs={12} sm={6} md={3} key={index}>
-                <Paper>
-                  {link.channel}
-                  <a href={link.url} target="_blank" rel="noreferrer">
-                    {link.channel}
-                  </a>
-                </Paper>
-              </Grid>
-            )
-        )}
-      </Grid>
+        <Grid container my={5} spacing={3}>
+          {indLinks.map(
+            (link, index) =>
+              link.channel && (
+                <Grid item xs={12} sm={6} md={3} key={index}>
+                  <Card elevation={3}>
+                    <CardHeader title={link.channel}/>
+                    <div className="online-logo">
+                    <CircleIcon color="success" fontSize="small"/><Typography variant="body2">{link.status}</Typography>
+                    </div>
+                    <CardContent>
+                    <Link href={link.url} target='_blank' rel="noopener" underline="hover">{link.channel}</Link>
+                    </CardContent>
+                  </Card>
+                </Grid>
+              )
+          )}
+        </Grid>
       </Container>
-      {/* </TableBody> */}
 
       {allLinks.map((link) => (
         <>
