@@ -1,12 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
-import TvLinks from './components/TvLinks';
+import logo from "./logo.svg";
+import "./App.css";
+import TvLinks from "./components/TvLinks";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import VideoPlayer from "./components/VideoPlayer";
 
 function App() {
   return (
-    <div>
-     <TvLinks />
-    </div>
+    <Router>
+      <div>
+        <Switch>
+          <Route exact path="/">
+            <TvLinks />
+          </Route>
+          <Route path="/VideoPlayer">
+            <VideoPlayer />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 

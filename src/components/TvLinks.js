@@ -7,12 +7,13 @@ import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import "./TvLinks.css";
-import { Grid, Box, Link, Typography } from "@mui/material";
+import { Grid, Box, Link, Typography, Button } from "@mui/material";
 import { Container } from "@mui/system";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardContent from "@mui/material/CardContent";
 import CircleIcon from "@mui/icons-material/Circle";
+import { Link as RouteLink } from "react-router-dom";
 
 const TvLinks = () => {
   const [allLinks, setAllLinks] = useState([]);
@@ -55,6 +56,9 @@ const TvLinks = () => {
             <TableRow>
               <TableCell align="right">Tv Channel</TableCell>
               <TableCell align="left">Live Link</TableCell>
+              <Button>
+                <RouteLink to="/VideoPlayer">VideoPlayer</RouteLink>
+              </Button>
             </TableRow>
           </TableHead>
         </Table>
