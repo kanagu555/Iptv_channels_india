@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import TvLinks from "./components/TvLinks";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -7,7 +6,7 @@ import VideoPlayer from "./components/VideoPlayer";
 function App() {
   return (
     <Router>
-      <div>
+      <div className="bg-full">
         <Switch>
           <Route exact path="/">
             <TvLinks />
