@@ -1,14 +1,19 @@
-import { Button } from "@mui/material";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import ReactHlsPlayer from "react-hls-player";
 
 function VideoPlayer() {
+  const location = useLocation();
+
+  console.log("location:", location);
+
   return (
     <>
-      <div>VideoPlayer</div>
-      <Button>
-        <Link to="/">HOME</Link>
-      </Button>
+      <ReactHlsPlayer
+        src={location.state?.videoLink}
+        autoPlay={true}
+        controls={true}
+      />
     </>
   );
 }

@@ -56,9 +56,6 @@ const TvLinks = () => {
             <TableRow>
               <TableCell align="right">Tv Channel</TableCell>
               <TableCell align="left">Live Link</TableCell>
-              <Button>
-                <RouteLink to="/VideoPlayer">VideoPlayer</RouteLink>
-              </Button>
             </TableRow>
           </TableHead>
         </Table>
@@ -76,14 +73,18 @@ const TvLinks = () => {
                       <Typography variant="body2">{link.status}</Typography>
                     </div>
                     <CardContent>
-                      <Link
-                        href={link.url}
-                        target="_blank"
+                      <RouteLink
+                        // href={link.url}
+                        to={{
+                          pathname: "/VideoPlayer",
+                          state: { videoLink: link.url },
+                        }}
+                        // target="_blank"
                         rel="noopener"
                         underline="hover"
                       >
                         {link.channel}
-                      </Link>
+                      </RouteLink>
                     </CardContent>
                   </Card>
                 </Grid>
@@ -91,18 +92,6 @@ const TvLinks = () => {
           )}
         </Grid>
       </Container>
-
-      {allLinks.map((link) => (
-        <>
-          {link.channel === "AsianetNewsTamil.in" ? (
-            <>
-              {console.log("link::", link)}
-              <tr>{link.channel}</tr>
-              <ReactHlsPlayer src={link.url} autoPlay={false} controls={true} />
-            </>
-          ) : null}
-        </>
-      ))}
     </>
   );
 };
