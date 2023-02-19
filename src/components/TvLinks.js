@@ -1,13 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import ReactHlsPlayer from "react-hls-player";
 import TableContainer from "@mui/material/TableContainer";
 import Table from "@mui/material/Table";
 import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import "./TvLinks.css";
-import { Grid, Box, Link, Typography, Button } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
@@ -31,8 +30,6 @@ const TvLinks = () => {
       .then((res) => setChannels(res.data));
   }, []);
 
-  // console.log("allLinks:", allLinks);
-  // console.log("channels:", channels);
 
   const indLinks = allLinks.filter((link) => {
     const countryMatch = channels.find(
@@ -74,7 +71,6 @@ const TvLinks = () => {
                     </div>
                     <CardContent>
                       <RouteLink
-                        // href={link.url}
                         to={{
                           pathname: "/VideoPlayer",
                           state: { videoLink: link.url },
