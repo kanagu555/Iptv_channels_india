@@ -6,16 +6,18 @@ import VideoPlayer from "./components/VideoPlayer";
 function App() {
   return (
     <Router>
-      <div className="bg-full">
-        <Switch>
-          <Route exact path="/">
+      <Switch>
+        <Route exact path="/">
+          <div className="bg-full">
             <TvLinks />
-          </Route>
-          <Route path="/VideoPlayer">
+          </div>
+        </Route>
+        <Route path="/VideoPlayer">
+          <div>
             <VideoPlayer />
-          </Route>
-        </Switch>
-      </div>
+          </div>
+        </Route>
+      </Switch>
     </Router>
   );
 }
