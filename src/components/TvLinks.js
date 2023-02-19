@@ -30,7 +30,6 @@ const TvLinks = () => {
       .then((res) => setChannels(res.data));
   }, []);
 
-
   const indLinks = allLinks.filter((link) => {
     const countryMatch = channels.find(
       (channel) =>
@@ -45,18 +44,6 @@ const TvLinks = () => {
 
   return (
     <>
-      <div>TvLinks</div>
-      <div className="center-box"></div>
-      <TableContainer>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell align="right">Tv Channel</TableCell>
-              <TableCell align="left">Live Link</TableCell>
-            </TableRow>
-          </TableHead>
-        </Table>
-      </TableContainer>
       <Container>
         <Grid container my={5} spacing={3}>
           {indLinks.map(
@@ -64,24 +51,26 @@ const TvLinks = () => {
               link.channel && (
                 <Grid item xs={12} sm={6} md={3} key={index}>
                   <Card elevation={3}>
-                    <CardHeader title={link.channel} />
-                    <div className="online-logo">
-                      <CircleIcon color="success" fontSize="small" />
-                      <Typography variant="body2">{link.status}</Typography>
+                    <div className="center-box">
+                      <Typography my={2} sx={{ fontWeight: 'bold', fontFamily: 'Merriweather Sans' }}>{link.channel}</Typography>
+                      <div className="online-logo">
+                        <CircleIcon color="success" fontSize="small" />
+                        <Typography variant="body2">{link.status}</Typography>
+                      </div>
+                      <CardContent>
+                        <RouteLink
+                          to={{
+                            pathname: "/VideoPlayer",
+                            state: { videoLink: link.url },
+                          }}
+                          // target="_blank"
+                          rel="noopener"
+                          underline="hover"
+                        >
+                          {link.channel}
+                        </RouteLink>
+                      </CardContent>
                     </div>
-                    <CardContent>
-                      <RouteLink
-                        to={{
-                          pathname: "/VideoPlayer",
-                          state: { videoLink: link.url },
-                        }}
-                        // target="_blank"
-                        rel="noopener"
-                        underline="hover"
-                      >
-                        {link.channel}
-                      </RouteLink>
-                    </CardContent>
                   </Card>
                 </Grid>
               )
