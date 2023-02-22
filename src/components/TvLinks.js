@@ -1,15 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import TableContainer from "@mui/material/TableContainer";
-import Table from "@mui/material/Table";
-import TableCell from "@mui/material/TableCell";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
 import "./TvLinks.css";
 import { Grid, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import Card from "@mui/material/Card";
-import CardHeader from "@mui/material/CardHeader";
 import CardContent from "@mui/material/CardContent";
 import CircleIcon from "@mui/icons-material/Circle";
 import { Link as RouteLink } from "react-router-dom";
@@ -52,7 +46,15 @@ const TvLinks = () => {
                 <Grid item xs={12} sm={6} md={3} key={index}>
                   <Card elevation={3}>
                     <div className="center-box">
-                      <Typography my={2} sx={{ fontWeight: 'bold', fontFamily: 'Merriweather Sans' }}>{link.channel}</Typography>
+                      <Typography
+                        my={2}
+                        sx={{
+                          fontWeight: "bold",
+                          fontFamily: "Merriweather Sans",
+                        }}
+                      >
+                        {link.channel}
+                      </Typography>
                       <div className="online-logo">
                         <CircleIcon color="success" fontSize="small" />
                         <Typography variant="body2">{link.status}</Typography>
