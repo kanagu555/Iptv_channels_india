@@ -9,3 +9,10 @@
     display: flex;
     padding-left: 15px;
 }
+
+.header-bar{
+    height: 35px;
+    background-color: black;
+    border-radius: 0px 0px 7px 7px;
+    color: white;
+}

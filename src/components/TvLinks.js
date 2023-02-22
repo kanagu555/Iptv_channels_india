@@ -7,6 +7,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CircleIcon from "@mui/icons-material/Circle";
 import { Link as RouteLink } from "react-router-dom";
+import Header from "./Header";
 
 const TvLinks = () => {
   const [allLinks, setAllLinks] = useState([]);
@@ -38,8 +39,9 @@ const TvLinks = () => {
 
   return (
     <>
+      <Header />
       <Container>
-        <Grid container my={5} spacing={3}>
+        <Grid container my={2} spacing={3}>
           {indLinks.map(
             (link, index) =>
               link.channel && (
