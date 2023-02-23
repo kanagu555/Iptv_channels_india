@@ -1,0 +1,11 @@
+.center-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.online-logo {
+  display: flex;
+  padding-left: 15px;
+}

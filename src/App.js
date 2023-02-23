@@ -1,7 +1,7 @@
 import "./App.css";
-import TvLinks from "./components/TvLinks";
+import TvLinks from "../src/components/TvLinks/TvLinks";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import VideoPlayer from "./components/VideoPlayer";
+import VideoPlayer from "../src/components/VideoPlayer/VideoPlayer";
 
 function App() {
   return (
