@@ -1,18 +1,32 @@
-.center-box{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+.center-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .online-logo {
-    display: flex;
-    padding-left: 15px;
+  display: flex;
+  padding-left: 15px;
 }
 
-.header-bar{
-    height: 35px;
-    background-color: black;
-    border-radius: 0px 0px 7px 7px;
-    color: white;
+.header-bar {
+  height: 35px;
+  background-color: black;
+  border-radius: 0px 0px 7px 7px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 2em;
+}
+
+.filter-type {
+    display: flex;
+    align-items: center;
+    padding-right: 5rem;
+}
+
+.filter-lang {
+    padding-right: 3rem;
 }

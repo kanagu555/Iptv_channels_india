@@ -1,11 +1,16 @@
-import React from 'react'
+import React from "react";
 import "./TvLinks.css";
-
 
 function Header() {
   return (
-    <div className='header-bar'>Header</div>
-  )
+    <div className="header-bar">
+      <div>Logo/ICON</div>
+      <div className="filter-type">
+        <div className="filter-lang">Language</div>
+        <div className="filter-coun">Country</div>
+      </div>
+    </div>
+  );
 }
 
-export default Header
+export default Header;
