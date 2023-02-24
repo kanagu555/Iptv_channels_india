@@ -8,12 +8,15 @@ import CardContent from "@mui/material/CardContent";
 import CircleIcon from "@mui/icons-material/Circle";
 import { Link as RouteLink } from "react-router-dom";
 import Header from "../HeaderNavigation/Header";
+import LoadingSpinner from "../Spinner/LoadingSpinner";
 
 const TvLinks = () => {
   const [allLinks, setAllLinks] = useState([]);
   const [channels, setChannels] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     axios
       .get("https://iptv-org.github.io/api/streams.json")
       .then((res) => setAllLinks(res.data));
@@ -25,6 +28,7 @@ const TvLinks = () => {
       .then((res) => setChannels(res.data));
   }, []);
 
+
   const indLinks = allLinks.filter((link) => {
     const countryMatch = channels.find(
       (channel) =>
@@ -35,9 +39,14 @@ const TvLinks = () => {
     return countryMatch !== undefined;
   });
 
-  console.log("indLinks:", indLinks);
+  useEffect(() => {
+    if (indLinks.length) {
+      setIsLoading(false);
+    }
+  }, [indLinks]);
 
-  return (
+
+  const TvLinksRender = (
     <>
       <Header />
       <Container>
@@ -83,6 +92,8 @@ const TvLinks = () => {
       </Container>
     </>
   );
+
+  return <>{isLoading ? <LoadingSpinner /> : TvLinksRender}</>;
 };
 
 export default TvLinks;
