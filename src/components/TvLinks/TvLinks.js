@@ -9,6 +9,7 @@ import CircleIcon from "@mui/icons-material/Circle";
 import { Link as RouteLink } from "react-router-dom";
 import Header from "../HeaderNavigation/Header";
 import LoadingSpinner from "../Spinner/LoadingSpinner";
+import FooterBar from "../Footer/FooterBar";
 
 const TvLinks = () => {
   const [allLinks, setAllLinks] = useState([]);
@@ -90,6 +91,7 @@ const TvLinks = () => {
           )}
         </Grid>
       </Container>
+      <FooterBar/>
     </>
   );
 
